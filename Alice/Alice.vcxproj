@@ -138,12 +138,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Color.hpp" />
+    <ClInclude Include="Core.hpp" />
+    <ClInclude Include="Hit.hpp" />
     <ClInclude Include="Image.hpp" />
+    <ClInclude Include="Light.hpp" />
+    <ClInclude Include="Material.hpp" />
     <ClInclude Include="Math.hpp" />
+    <ClInclude Include="Ray.hpp" />
+    <ClInclude Include="Renderer.hpp" />
+    <ClInclude Include="Scene.hpp" />
+    <ClInclude Include="Shape.hpp" />
+    <ClInclude Include="Sphere.hpp" />
+    <ClInclude Include="Triangle.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Renderer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

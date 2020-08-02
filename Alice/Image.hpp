@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <Color.hpp>
 #include <Math.hpp>
 
 namespace Alice
@@ -20,6 +21,18 @@ namespace Alice
 		{
 			auto size = width * height * channel;
 			data.resize(size);
+			// std::move maybe more suitable.
+			// but it doesn't matter.
+			memcpy(&data[0],d,sizeof(unsigned char) * size);
+		}
+
+		explicit Image(uint32_t w,uint32_t h,uint32_t c,const Color* d)
+			: width(w),height(h),channel(c)
+		{
+			auto size = width * height * channel;
+			data.resize(size);
+			// std::move maybe more suitable.
+			// but it doesn't matter.
 			memcpy(&data[0],d,sizeof(unsigned char) * size);
 		}
 
@@ -27,6 +40,19 @@ namespace Alice
 		~Image() = default;
 
 		bool SetPixel(uint32_t x,uint32_t y,unsigned char r,unsigned char g,unsigned char b);
+
+		auto GetPixel(float u,float v) const
+		{
+			u = u - int(u);
+			v = v - int(v);
+			uint32_t x = u * width;
+			uint32_t y = v * height;
+			return glm::vec3( data[y * width * 3 + x * 3],
+							  data[y * width * 3 + x * 3 + 1],
+							  data[y * width * 3 + x * 3 + 2]);
+
+		}
+
 		bool SetPixel(uint32_t x,uint32_t y,Color color);
 		int SaveAsTga(std::string path);
 
