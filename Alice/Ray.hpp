@@ -5,19 +5,18 @@ namespace Alice
 {
 	class Ray
 	{
+	private:
+		vec3 origin;
+		vec3 direction;
 	public:
-		glm::vec3 origin;
-		glm::vec3 direction,direction_inv;
-		float t = 0.0f;
-		float t_min = 0.0f;
-		float t_max = std::numeric_limits<float>::max();
-	public:
-		Ray(const glm::vec3& ori, const glm::vec3& dir, const float _t = 0.0f)
-		: origin(ori), direction(dir),t(_t) 
-		{
-			direction_inv = glm::vec3(1.0f/direction.x, 1.0f/direction.y, 1.0f/direction.z);
-		}
+		Ray() = default;
+		Ray(const vec3& orig,const vec3& dir):origin(orig),direction(dir){ }
 
-		auto operator()(float t) const { return origin + direction * t; }
+		vec3 At(float t) const { return origin + t*direction; }
+
+		vec3 GetOrigin() const { return origin; }
+		vec3 GetDirection() const { return direction; }
+		void SetOrigin(const vec3& orig) { origin = orig; }
+		void SetDirection(const vec3& dir) { direction = dir; }
 	};
 }

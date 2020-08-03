@@ -3,7 +3,6 @@
 
 namespace Alice
 {
-    constexpr auto EPSILON = 0.00001f;
 
 	inline void PrintRenderProgress(float progress)
 	{
