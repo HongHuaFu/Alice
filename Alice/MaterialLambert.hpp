@@ -1,6 +1,6 @@
 #pragma once
 #include <Random.hpp>
-
+#include <Material.hpp>
 namespace Alice
 {
 	class MaterialLambert: public Material

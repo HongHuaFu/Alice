@@ -29,19 +29,9 @@ namespace Alice
 	{
 		if(x >= width || y >= height)
 			return false;
-		data[y * width * 3 + x * 3] = r;
-		data[y * width * 3 + x * 3 + 1] = g;
-		data[y * width * 3 + x * 3 + 2] = b;
-		return true;
-	}
-
-	bool Image::SetPixel(uint32_t x,uint32_t y,Color color)
-	{
-		if(x >= width || y >= height)
-			return false;
-		data[y * width * 3 + x * 3] = color.r;
-		data[y * width * 3 + x * 3 + 1] = color.g;
-		data[y * width * 3 + x * 3 + 2] = color.b;
+		data[y * width * channel + x * channel] = r;
+		data[y * width * channel + x * channel + 1] = g;
+		data[y * width * channel + x * channel + 2] = b;
 		return true;
 	}
 

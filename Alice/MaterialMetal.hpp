@@ -1,4 +1,6 @@
 #pragma once
+#include <Material.hpp>
+#include <Random.hpp>
 
 namespace Alice
 {

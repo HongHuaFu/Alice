@@ -1,13 +1,11 @@
 #pragma once
 #include <vector>
 #include <string>
-#include <Color.hpp>
 #include <Math.hpp>
 
 namespace Alice
 {
-	// Image class contain framebuffer data,
-	// We Can use it as a fbo but no care of assume.
+	// TODO: 拆分为Textue类和ImageImporter和Exporter类
 	class Image
 	{
 	public:
@@ -26,16 +24,6 @@ namespace Alice
 			memcpy(&data[0],d,sizeof(unsigned char) * size);
 		}
 
-		explicit Image(uint32_t w,uint32_t h,uint32_t c,const Color* d)
-			: width(w),height(h),channel(c)
-		{
-			auto size = width * height * channel;
-			data.resize(size);
-			// std::move maybe more suitable.
-			// but it doesn't matter.
-			memcpy(&data[0],d,sizeof(unsigned char) * size);
-		}
-
 		Image() = default;
 		~Image() = default;
 
@@ -45,15 +33,14 @@ namespace Alice
 		{
 			u = u - int(u);
 			v = v - int(v);
-			uint32_t x = u * width;
-			uint32_t y = v * height;
+			uint32_t x = (uint32_t)(u * width);
+			uint32_t y = (uint32_t)(v * height);
 			return glm::vec3( data[y * width * 3 + x * 3],
 							  data[y * width * 3 + x * 3 + 1],
 							  data[y * width * 3 + x * 3 + 2]);
 
 		}
 
-		bool SetPixel(uint32_t x,uint32_t y,Color color);
 		int SaveAsTga(std::string path);
 
 	private:

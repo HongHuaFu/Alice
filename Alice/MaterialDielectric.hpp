@@ -1,5 +1,6 @@
 #pragma once
-
+#include <Material.hpp>
+#include <Random.hpp>
 namespace Alice
 {
 	// ∑«µÁΩÈ÷ 
@@ -35,7 +36,7 @@ namespace Alice
 			else 
 			{
 				outward_normal = hit.normal;
-				ni_over_nt = 1.0 / ref_idx;
+				ni_over_nt = 1.0f / ref_idx;
 				cosine = -dot(r_in.GetDirection(), hit.normal) / r_in.GetDirection().length();
 			}
 

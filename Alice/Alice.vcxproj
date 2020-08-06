@@ -138,15 +138,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="BVH.hpp" />
     <ClInclude Include="Camera.hpp" />
-    <ClInclude Include="Color.hpp" />
     <ClInclude Include="Core.hpp" />
     <ClInclude Include="Hit.hpp" />
     <ClInclude Include="Image.hpp" />
-    <ClInclude Include="Importer.hpp" />
-    <ClInclude Include="ImportImage.cpp" />
-    <ClInclude Include="Light.hpp" />
     <ClInclude Include="Material.hpp" />
     <ClInclude Include="MaterialDielectric.hpp" />
     <ClInclude Include="MaterialLambert.hpp" />
@@ -155,17 +150,13 @@
     <ClInclude Include="Random.hpp" />
     <ClInclude Include="Ray.hpp" />
     <ClInclude Include="Renderer.hpp" />
-    <ClInclude Include="Assets.hpp" />
     <ClInclude Include="Scene.hpp" />
     <ClInclude Include="Shape.hpp" />
     <ClInclude Include="Sphere.hpp" />
-    <ClInclude Include="Triangle.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Assets.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Image.cpp" />
-    <ClCompile Include="ImportObj.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Renderer.cpp" />
   </ItemGroup>

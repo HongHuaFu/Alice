@@ -3,6 +3,7 @@
 
 namespace Alice
 {
+	constexpr auto MaxFloat = FLT_MAX;
 
 	inline void PrintRenderProgress(float progress)
 	{

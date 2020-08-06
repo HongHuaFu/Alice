@@ -2,90 +2,55 @@
 #include <Shape.hpp>
 #include <Math.hpp>
 #include <Material.hpp>
+#include <memory>
 
 namespace Alice
 {
-	class Sphere final : public Shape
+	class Sphere : public Shape
 	{
-	private:
-		glm::vec3 center;
-		// Store square of radius to accelerate.
-		float radius, radius2;
-		Material* material;
+	public:
+		Sphere() = default;
+		Sphere(vec3 cen, float r, std::shared_ptr<Material> m) : center(cen), radius(r), material(m),radius2(r * r),radius_inv(1.0f / r) { };
+
+		float GetRadius() const { return radius; }
+		void SetRadius(float r) { radius = r; radius2 = r * r; radius_inv = 1.0f / r; }
+
+		virtual bool Intersect(const Ray& r,float tmin,float tmax,Hit& hit) const override
+		{
+			vec3 oc = r.GetOrigin() - center;
+			float a = dot(r.GetDirection(), r.GetDirection());
+			float b = dot(oc, r.GetDirection());
+			float c = dot(oc, oc) - radius2;
+			float discriminant = b*b - a*c;
+
+			if (discriminant > 0) 
+			{
+				float temp = (-b - sqrt(discriminant)) / a;
+				if (temp < tmax && temp > tmin) {
+					hit.t = temp;
+					hit.pos = r.At(hit.t);
+					hit.normal = (hit.pos - center) * radius_inv;
+					hit.material = material;
+					return true;
+				}
+
+				temp = (-b + sqrt(discriminant)) / a;
+				if (temp < tmax && temp > tmin) {
+					hit.t = temp;
+					hit.pos = r.At(hit.t);
+					hit.normal = (hit.pos - center) * radius_inv;
+					hit.material = material;
+					return true;
+				}
+			}
+			return false;
+		}
 
 	public:
-		Sphere(const glm::vec3& c, const float& r,Material* m) : center(c),radius(r),radius2(r * r),material(m){ }
+		std::shared_ptr<Material> material;
+		vec3 center;
 
-		Material* GetMaterial() const override
-		{
-			return material;
-		}
-
-
-
-		// Sphere intersect judge.
-		bool Intersect(const Ray& ray) const override
-		{
-			// Analytic solution
-			glm::vec3 L = ray.origin - center;
-			float a = glm::dot(ray.direction, ray.direction);
-			float b = 2 * glm::dot(ray.direction, L);
-			float c = glm::dot(L, L) - radius2;
-			float t0, t1;
-			if (!SolveQuadratic(a,b,c,t0,t1))
-				return false;
-			if (t0 < 0)
-				t0 = t1;
-			if (t0 < 0)
-				return false;
-			return true;
-		}
-
-		// TODO: Sphere uv need to fix.
-		bool Intersect(const Ray& ray,glm::vec2& uv) const override
-		{
-			glm::vec3 L = ray.origin - center;
-			float a = glm::dot(ray.direction, ray.direction);
-			float b = 2 * glm::dot(ray.direction, L);
-			float c = glm::dot(L, L) - radius2;
-			float t0, t1;
-			if (!SolveQuadratic(a, b, c, t0, t1)) 
-				return false;
-			if (t0 < 0) 
-				t0 = t1;
-			if (t0 < 0) 
-				return false;
-			return true;
-		}
-
-		// Sphere intersect judge.
-		// Then return intersect distance - t value.
-		bool Intersect(const Ray& ray, float& tnear, uint32_t& index,glm::vec2&) const override
-		{
-			// analytic solution
-			glm::vec3 L = ray.origin - center;
-			float a = glm::dot(ray.direction, ray.direction);
-			float b = 2 * glm::dot(ray.direction, L);
-			float c = glm::dot(L, L) - radius2;
-			float t0, t1;
-			if (!SolveQuadratic(a, b, c, t0, t1)) 
-				return false;
-			if (t0 < 0) 
-				t0 = t1;
-			if (t0 < 0) 
-				return false;
-			tnear = t0;
-			return true;
-		}
-
-		void GetSurfaceProperties(const glm::vec3& P, const glm::vec3& I, const uint32_t &index, const glm::vec2& uv, glm::vec3& N, glm::vec2& st) const override
-		{
-			N = normalize(P - center); 
-		}
-
-		glm::vec3 EvalDiffuseColor(const glm::vec2& st) const override
-		{
-			return material->GetColor();
-		}
+	protected:
+		float radius,radius2,radius_inv;
 	};
 }

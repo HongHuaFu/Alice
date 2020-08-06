@@ -11,7 +11,3 @@ namespace Alice
 		virtual bool Scatter(const Ray&,const Hit&, vec3&, Ray&) const = 0;
 	};
 }
-
-#include <MaterialLambert.hpp>
-#include <MaterialMetal.hpp>
-#include <MaterialDielectric.hpp>
