@@ -15,6 +15,8 @@ namespace Alice
 		vec3 horizontal_dir,vertical_dir;
 		vec3 u,v,w;
 		float lens_radius;
+		float time0,time1;// 相机开启/关闭的时间
+
 	public:
 		// lookfrom 视点
 		// lookat 视线方向
@@ -23,7 +25,7 @@ namespace Alice
 		// aspect 长宽比
 		// aperture 光圈大小
 		// focus_dist 焦距
-		Camera(vec3 lookfrom,vec3 lookat,vec3 vup,float vfov,float aspect,float aperture,float focus_dist);
+		Camera(vec3 lookfrom,vec3 lookat,vec3 vup,float vfov,float aspect,float aperture,float focus_dist,float t0 = 0,float t1 = 0);
 		
 		// 投射光线
 		Ray CastRay(const vec2& uv) const { return CastRay(uv.x,uv.y); }

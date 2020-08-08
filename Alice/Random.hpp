@@ -8,6 +8,8 @@ namespace Alice
 	public:
 		static float GetRandom1d(float min = -1.0f,float max = 1.0f){ return linearRand(min,max); }
 
+		static float GetRandom1dInt(int min = -1,int max = 1){ return static_cast<int>(GetRandom1d(min,max + 1)); }
+
 		// 获得区间内的随机单位向量
 		static vec2 GetRandom2d(float min = -1.0f,float max = 1.0f){ return vec2(GetRandom1d(min,max),GetRandom1d(min,max)); }
 

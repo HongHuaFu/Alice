@@ -21,6 +21,27 @@ namespace Alice
 		Scene() = default;
 		void AddShapePtrRef(std::shared_ptr<Shape> shape) { shapes.push_back(shape); }
 
+		// 获取场景的包围盒
+		bool GetBBox(float t0,float t1,AABB& out_box) const
+		{
+			if (shapes.empty()) return false;
+
+			AABB temp_box;
+			bool first_box = true;
+
+			for (const auto& shape : shapes) 
+			{
+				// 第一次启用时构建
+				if (!shape->GetBBox(t0, t1, temp_box)) 
+					return false;
+
+				out_box = first_box ? temp_box : SurroundingBox(out_box, temp_box);
+				first_box = false;
+			}
+
+			return true;
+		}
+
 		bool RayTrace(const Ray& r,float tmin,float tmax,Hit& hit) const
 		{
 			Hit temp_rec;

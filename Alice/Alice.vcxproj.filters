@@ -16,6 +16,9 @@
     <Filter Include="Math">
       <UniqueIdentifier>{d84152aa-72f2-44f2-91c3-9660b0435005}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Accelerator">
+      <UniqueIdentifier>{70bc0f22-67ff-4fa9-bed3-68d950568646}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene.hpp">
@@ -62,6 +65,12 @@
     </ClInclude>
     <ClInclude Include="Image.hpp">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="AABB.hpp">
+      <Filter>Accelerator</Filter>
+    </ClInclude>
+    <ClInclude Include="BVH.hpp">
+      <Filter>Accelerator</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

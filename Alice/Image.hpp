@@ -5,7 +5,7 @@
 
 namespace Alice
 {
-	// TODO: 拆分为Textue类和ImageImporter和Exporter类
+	// TODO: 拆分为Textue类和ImageImporter和ImageExporter类
 	class Image
 	{
 	public:

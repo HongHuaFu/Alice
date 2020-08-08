@@ -2,6 +2,7 @@
 #include <Shape.hpp>
 #include <Math.hpp>
 #include <Material.hpp>
+#include <AABB.hpp>
 #include <memory>
 
 namespace Alice
@@ -14,6 +15,12 @@ namespace Alice
 
 		float GetRadius() const { return radius; }
 		void SetRadius(float r) { radius = r; radius2 = r * r; radius_inv = 1.0f / r; }
+
+		virtual bool GetBBox(float t0,float t1,AABB& output_box) const override
+		{
+			output_box = AABB(center - vec3(radius, radius, radius), center + vec3(radius, radius, radius));
+			return true;
+		}
 
 		virtual bool Intersect(const Ray& r,float tmin,float tmax,Hit& hit) const override
 		{
