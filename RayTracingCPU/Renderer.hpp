@@ -17,12 +17,12 @@ namespace Alice::RayTracingCPU
 	public:
 
 		// 运动模糊参数暂时放在Render函数中
-		void Render(Scene& scene,const std::string& path, bool openBVH = false,float time0 = 0,float time1 = 0.0f);
+		void Render(Scene& scene,const std::string& path, bool openBVH = false,float time0 = 0,float time1 = 0.0f,bool background_color = false);
 	protected:
 		// 单根光线在场景中做光线追踪
 		// depth为光线反射次数
-		vec3 RayTrace(const Ray& r,const Scene& scene,int depth);
+		vec3 RayTrace(const Ray& r,const Scene& scene,int depth,bool background_color = false);
 
-		vec3 RayTraceBVH(const Ray& r,Scene& scene,int depth,float time0 = 0.0f,float time1 = 1.0f);
+		vec3 RayTraceBVH(const Ray& r,Scene& scene,int depth,float time0 = 0.0f,float time1 = 1.0f,bool background_color = false);
 	};
 }

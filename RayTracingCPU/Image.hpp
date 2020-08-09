@@ -47,6 +47,7 @@ namespace Alice::RayTracingCPU
 	};
 
 	// Image load function.
+	// No Gamma Correct.
 	Image ImageLoad(std::string path,int req_comp = 0);
 
 	// Image save function.

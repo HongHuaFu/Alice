@@ -12,6 +12,8 @@ namespace Alice::RayTracingCPU
 		float t;
 		vec3 pos;
 		vec3 normal;
+		vec2 uv;
+		// bool front_face;
 		std::shared_ptr<Material> material;
 	};
 }

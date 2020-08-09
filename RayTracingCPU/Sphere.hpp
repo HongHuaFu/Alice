@@ -38,6 +38,8 @@ namespace Alice::RayTracingCPU
 					hit.pos = r.At(hit.t);
 					hit.normal = (hit.pos - center) * radius_inv;
 					hit.material = material;
+					hit.uv = SphereUV((hit.pos-center)/radius);
+					
 					return true;
 				}
 
@@ -47,6 +49,7 @@ namespace Alice::RayTracingCPU
 					hit.pos = r.At(hit.t);
 					hit.normal = (hit.pos - center) * radius_inv;
 					hit.material = material;
+					hit.uv = SphereUV((hit.pos-center)/radius);
 					return true;
 				}
 			}

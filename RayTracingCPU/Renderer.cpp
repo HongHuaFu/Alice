@@ -4,7 +4,7 @@
 
 namespace Alice::RayTracingCPU
 {
-	void Renderer::Render(Scene& scene,const std::string& path,bool openBVH,float time0,float time1)
+	void Renderer::Render(Scene& scene,const std::string& path,bool openBVH,float time0,float time1,bool background_color)
 	{
 		std::vector<unsigned char> data;
 		int channel = 3;
@@ -26,9 +26,9 @@ namespace Alice::RayTracingCPU
 					Ray r = scene.camera->CastRay(u, v);
 
 					if(openBVH)
-						col += RayTraceBVH(r, scene,0,time0,time1);
+						col += RayTraceBVH(r, scene,0,time0,time1,background_color);
 					else
-						col += RayTrace(r, scene,0);
+						col += RayTrace(r, scene,0,background_color);
 				}
 				col /= float(randomRay);
 
@@ -50,17 +50,18 @@ namespace Alice::RayTracingCPU
 	}
 
 
-	vec3 Renderer::RayTrace(const Ray& r,const Scene& scene,int depth)
+	vec3 Renderer::RayTrace(const Ray& r,const Scene& scene,int depth,bool background)
 	{
 		Hit hit;
 		if (scene.RayTrace(r, 0.001f, MaxFloat, hit)) 
 		{
 			Ray scattered;
 			vec3 attenuation;
+			vec3 emitted = hit.material->Emitted(hit.uv.x,hit.uv.y,hit.pos);
 			if (depth < rayMaxDepth && hit.material->Scatter(r, hit, attenuation, scattered)) 
 			{
 				// 递归式计算光线反射
-				return attenuation * RayTrace(scattered, scene, depth + 1);
+				return emitted + attenuation * RayTrace(scattered, scene, depth + 1);
 			}
 			else 
 			{
@@ -70,22 +71,24 @@ namespace Alice::RayTracingCPU
 		}
 		else // 与场景中所有物体都不相交，在这里绘制天空盒
 		{
+			if(background) return scene.background_color;
 			return scene.DrawSky(r);
 		}
 	}
 
 	// BVH加速的光线追踪
-	vec3 Renderer::RayTraceBVH(const Ray& r,Scene& scene,int depth,float time0,float time1)
+	vec3 Renderer::RayTraceBVH(const Ray& r,Scene& scene,int depth,float time0,float time1,bool background)
 	{
 		Hit hit;
 		if (scene.RayTraceBVH(r, 0.001f, MaxFloat, hit,time0,time1)) 
 		{
 			Ray scattered;
 			vec3 attenuation;
+			vec3 emitted = hit.material->Emitted(hit.uv.x,hit.uv.y,hit.pos);
 			if (depth < rayMaxDepth && hit.material->Scatter(r, hit, attenuation, scattered)) 
 			{
 				// 递归式计算光线反射
-				return attenuation * RayTraceBVH(scattered, scene, depth + 1,time0,time1);
+				return emitted + attenuation * RayTrace(scattered, scene, depth + 1);
 			}
 			else 
 			{
@@ -95,7 +98,9 @@ namespace Alice::RayTracingCPU
 		}
 		else // 与场景中所有物体都不相交，在这里绘制天空盒
 		{
+			if(background) return scene.background_color;
 			return scene.DrawSky(r);
 		}
 	}
+
 }

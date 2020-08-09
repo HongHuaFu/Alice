@@ -31,4 +31,15 @@ namespace Alice::RayTracingCPU
 			  r0 = r0*r0;
 		return r0 + (1-r0)*pow((1 - cosine),5);
 	}
+
+	// º∆À„«Ú–ŒUV
+	inline vec2 SphereUV(const vec3& p) 
+	{
+		auto phi = atan2(p.z, p.x);
+		auto theta = asin(p.y);
+		vec2 res;
+		res.x = 1-(phi + pi<float>()) / (2*pi<float>());
+		res.y = (theta + pi<float>() * 0.5f) / pi<float>();
+		return res;
+	}
 }
