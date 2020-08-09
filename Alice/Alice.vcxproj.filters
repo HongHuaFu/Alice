@@ -1,88 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Core">
-      <UniqueIdentifier>{b99900fe-8bad-4604-a858-01051ae61996}</UniqueIdentifier>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Shape">
-      <UniqueIdentifier>{d2e38734-8273-47aa-8083-4cd48ed5a862}</UniqueIdentifier>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Camera">
-      <UniqueIdentifier>{5543988e-0e85-46dc-849e-cb09deb8424c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Material">
-      <UniqueIdentifier>{7862349c-90a4-4641-bfa2-5f580b2074bd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Math">
-      <UniqueIdentifier>{d84152aa-72f2-44f2-91c3-9660b0435005}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Accelerator">
-      <UniqueIdentifier>{70bc0f22-67ff-4fa9-bed3-68d950568646}</UniqueIdentifier>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Scene.hpp">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Shape.hpp">
-      <Filter>Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="Sphere.hpp">
-      <Filter>Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer.hpp">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Core.hpp">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Ray.hpp">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Hit.hpp">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.hpp">
-      <Filter>Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="Material.hpp">
-      <Filter>Material</Filter>
-    </ClInclude>
-    <ClInclude Include="MaterialLambert.hpp">
-      <Filter>Material</Filter>
-    </ClInclude>
-    <ClInclude Include="Math.hpp">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Random.hpp">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="MaterialMetal.hpp">
-      <Filter>Material</Filter>
-    </ClInclude>
-    <ClInclude Include="MaterialDielectric.hpp">
-      <Filter>Material</Filter>
-    </ClInclude>
-    <ClInclude Include="Image.hpp">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="AABB.hpp">
-      <Filter>Accelerator</Filter>
-    </ClInclude>
-    <ClInclude Include="BVH.hpp">
-      <Filter>Accelerator</Filter>
-    </ClInclude>
+    <ClCompile Include="Main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Camera.cpp">
-      <Filter>Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="Image.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
+    <ClInclude Include="TestRayTracingCPU.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
