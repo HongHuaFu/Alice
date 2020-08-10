@@ -8,7 +8,9 @@ int main()
 	// RayTracingInOneWeekendSceneBVH();
 	// RayTracingInOneWeekendSceneMotionBlur();
 	// RayTracingInOneWeekendSceneCheckerTexture();
-	RenderEarthTexture();
+	// RenderEarthTexture();
+	// RenderEarthTexturePlaneLight();
+	EmptyCornellBox();
 	system("pause");
 	return 0;
 }

@@ -10,7 +10,32 @@ namespace Test::RayTracingCPU
 	}
 
 	// Render Peter Shirley RayTracingInOneWeekend end scene.
-	inline void RayTracingInOneWeekendScene(const std::string path = "RayTracingInOneWeekendScene.tga",uint32_t width = 256,uint32_t height = 256,uint32_t sampleTimes = 10)
+	inline void RayTracingInOneWeekendScene(const std::string path = "RayTracingInOneWeekendScene.tga",uint32_t width = 1024,uint32_t height = 1024,uint32_t sampleTimes = 10)
+	{
+		using namespace Alice::RayTracingCPU;
+		int nx = width;
+		int ny = height;
+		int ns = sampleTimes;
+
+		vec3 lookfrom(13,2,3);
+		vec3 lookat(0,0,0);
+		float dist_to_focus = 10.0f;
+		float aperture = 0.1f;
+
+		auto scene = Scene::CreateRandomSphereScene();
+		scene.camera = std::make_shared<Camera>(lookfrom, lookat, vec3(0,1,0), 20, float(nx)/float(ny), aperture, dist_to_focus);
+
+		Renderer r;
+		r.sizeX = nx;
+		r.sizeY = ny;
+		r.randomRay = ns;
+		r.rayMaxDepth = 50;
+
+		r.Render(scene,path);
+	}
+
+	// Render Peter Shirley RayTracingInOneWeekend end scene with bvh accelate.
+	inline void RayTracingInOneWeekendSceneBVH(const std::string path = "RayTracingInOneWeekendSceneBVH.tga",uint32_t width = 1024,uint32_t height = 1024,uint32_t sampleTimes = 10)
 	{
 		using namespace Alice::RayTracingCPU;
 		int nx = width;
@@ -31,32 +56,6 @@ namespace Test::RayTracingCPU
 		r.sizeY = ny;
 		r.randomRay = ns;
 		r.rayMaxDepth = 50;
-
-		r.Render(scene,path);
-	}
-
-	// Render Peter Shirley RayTracingInOneWeekend end scene with bvh accelate.
-	inline void RayTracingInOneWeekendSceneBVH(const std::string path = "RayTracingInOneWeekendSceneBVH.tga",uint32_t width = 1024,uint32_t height = 1024,uint32_t sampleTimes = 20)
-	{
-		using namespace Alice::RayTracingCPU;
-		int nx = width;
-		int ny = height;
-		int ns = sampleTimes;
-
-		vec3 lookfrom(13,2,3);
-		vec3 lookat(0,0,0);
-		float dist_to_focus = 10.0f;
-		float aperture = 0.1f;
-
-		auto scene = Scene::CreateRandomSphereScene();
-		scene.camera = std::make_shared<Camera>(lookfrom, lookat, vec3(0,1,0), 20, float(nx)/float(ny), aperture, dist_to_focus);
-
-
-		Renderer r;
-		r.sizeX = nx;
-		r.sizeY = ny;
-		r.randomRay = ns;
-		r.rayMaxDepth = 100;
 
 		r.Render(scene,path,true);
 	}
@@ -134,6 +133,59 @@ namespace Test::RayTracingCPU
 		r.rayMaxDepth = 100;
 
 		r.Render(scene,path,false);
+	}
+
+	// An earth texture mapping sphere with Light rect.
+	inline void RenderEarthTexturePlaneLight(const std::string path = "RenderEarthTexturePlaneLight.tga",uint32_t width = 1024,uint32_t height = 1024,uint32_t sampleTimes = 100)
+	{
+		using namespace Alice::RayTracingCPU;
+		int nx = width;
+		int ny = height;
+		int ns = sampleTimes;
+
+		vec3 lookfrom(26,3,6);
+		vec3 lookat(0,2,0);
+		float dist_to_focus = 10.0f;
+		float aperture = 0.0f;
+
+		Scene scene = Scene::CreateEarthTextureAndRectLight();
+		scene.camera = std::make_shared<Camera>(lookfrom, lookat, vec3(0,1,0), 20.0f, float(nx)/float(ny), aperture, dist_to_focus,0,1.0f);
+		scene.background_color = vec3(0);
+
+		Renderer r;
+		r.sizeX = nx;
+		r.sizeY = ny;
+		r.randomRay = ns;
+		r.rayMaxDepth = 200;
+
+		r.Render(scene,path,true,0,0,true);
+	}
+
+
+	// An empty cornell box scene.
+ 	inline void EmptyCornellBox(const std::string path = "EmptyCornellBox.tga",uint32_t width = 1024,uint32_t height = 1024,uint32_t sampleTimes = 200)
+	{
+		using namespace Alice::RayTracingCPU;
+		int nx = width;
+		int ny = height;
+		int ns = sampleTimes;
+
+		vec3 lookfrom(278, 278, -800);
+		vec3 lookat(278, 278, 0);
+		float dist_to_focus = 10.0f;
+		float aperture = 0.0f;
+
+		Scene scene = Scene::CreateCornellBoxEmpty();
+		scene.camera = std::make_shared<Camera>(lookfrom, lookat, vec3(0,1,0), 40.0f, float(nx)/float(ny), aperture, dist_to_focus,0,0.0f);
+		scene.background_color = vec3(0);
+
+		Renderer r;
+		r.sizeX = nx;
+		r.sizeY = ny;
+		r.randomRay = ns;
+		r.rayMaxDepth = 50;
+
+		r.Render(scene,path,true,0,0,true);
 	}
 }
 

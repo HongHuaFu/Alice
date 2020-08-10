@@ -69,6 +69,12 @@
     <ClInclude Include="Texture.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="AABBRect.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp">

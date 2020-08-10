@@ -11,6 +11,7 @@
 #include <RayTracingCPU/MaterialMetal.hpp>
 #include <RayTracingCPU/AABB.hpp>
 #include <RayTracingCPU/Texture.hpp>
+#include <RayTracingCPU/AABBRect.hpp>
 
 namespace Alice::RayTracingCPU
 {
@@ -205,6 +206,38 @@ namespace Alice::RayTracingCPU
 			auto earth_surface = std::make_shared<MaterialLambert>(earth_texture);
 			auto globe = std::make_shared<Sphere>(vec3(0,0,0), 2, earth_surface);
 			res.shapes.push_back(globe);
+			return res;
+		}
+
+		static Scene CreateEarthTextureAndRectLight(const char* path = "./Asset/Textures/2k_earth_daymap.jpg")
+		{
+			Scene res;
+			auto earth_texture = std::make_shared<TextureImage>(path);
+			auto earth_surface = std::make_shared<MaterialLambert>(earth_texture);
+
+			res.shapes.push_back(std::make_shared<Sphere>(vec3(0,-1000,0), 1000, earth_surface));
+			res.shapes.push_back(std::make_shared<Sphere>(vec3(0,2,0), 2, earth_surface));
+
+			auto diffuse_light = std::make_shared<MaterialDiffuseLight>(vec3(4.0f));
+			res.shapes.push_back(std::make_shared<AABB_Rect_XY>(3.0f, 5.0f, 1.0f, 3.0f, -2.0f, diffuse_light));
+			return res;
+		}
+
+		static Scene CreateCornellBoxEmpty()
+		{
+			Scene res;
+			auto red   = std::make_shared<MaterialLambert>(vec3(.65, .05, .05));
+			auto white = std::make_shared<MaterialLambert>(vec3(.73, .73, .73));
+			auto green = std::make_shared<MaterialLambert>(vec3(.12, .45, .15));
+			auto light = std::make_shared<MaterialDiffuseLight>(vec3(15, 15, 15));
+
+			res.shapes.push_back(std::make_shared<AABB_Rect_YZ>(0, 555, 0, 555, 555, green));
+			res.shapes.push_back(std::make_shared<AABB_Rect_YZ>(0, 555, 0, 555, 0, red));
+			res.shapes.push_back(std::make_shared<AABB_Rect_XZ>(213, 343, 227, 332, 554, light));
+			res.shapes.push_back(std::make_shared<AABB_Rect_XZ>(0, 555, 0, 555, 0, white));
+			res.shapes.push_back(std::make_shared<AABB_Rect_XY>(0, 555, 0, 555, 555, white));
+			res.shapes.push_back(std::make_shared<AABB_Rect_XY>(0, 555, 0, 555, 555, white));
+
 			return res;
 		}
 	};

@@ -139,6 +139,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AABB.hpp" />
+    <ClInclude Include="AABBRect.hpp" />
     <ClInclude Include="BVH.hpp" />
     <ClInclude Include="Camera.hpp" />
     <ClInclude Include="Core.hpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="Shape.hpp" />
     <ClInclude Include="Sphere.hpp" />
     <ClInclude Include="Texture.hpp" />
+    <ClInclude Include="Timer.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />

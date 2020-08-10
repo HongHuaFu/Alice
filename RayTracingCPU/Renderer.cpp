@@ -1,6 +1,7 @@
 #include <RayTracingCPU/Renderer.hpp>
 #include <RayTracingCPU/Core.hpp>
 #include <RayTracingCPU/Random.hpp>
+#include <RayTracingCPU/Timer.hpp>
 
 namespace Alice::RayTracingCPU
 {
@@ -13,6 +14,9 @@ namespace Alice::RayTracingCPU
 			res = new Image(sizeX,sizeY,3,data.data());
 
 		std::cout << "Alice is rendering picture on "<< path << " for you." << std::endl;
+		Timer timer;
+		timer.Start();
+
 		for (int j = sizeY-1; j >= 0; j--) 
 		{
 			for (int i = 0; i < sizeX; i++) 
@@ -42,8 +46,11 @@ namespace Alice::RayTracingCPU
 
 			PrintRenderProgress(1 - float(j) / float(sizeY));
 		}
+
+		timer.Stop();
 		std::cout<< std::endl;
 		std::cout << "Alice has finished work and the result put on "<< path << "." << std::endl;
+		std::cout << "Totally used time: "<< timer.Elapsed(TimeUnit::SS) << "s." << std::endl;
 		std::cout << std::flush;
 
 		res->SaveAsTga(path);
@@ -53,54 +60,47 @@ namespace Alice::RayTracingCPU
 	vec3 Renderer::RayTrace(const Ray& r,const Scene& scene,int depth,bool background)
 	{
 		Hit hit;
-		if (scene.RayTrace(r, 0.001f, MaxFloat, hit)) 
-		{
-			Ray scattered;
-			vec3 attenuation;
-			vec3 emitted = hit.material->Emitted(hit.uv.x,hit.uv.y,hit.pos);
-			if (depth < rayMaxDepth && hit.material->Scatter(r, hit, attenuation, scattered)) 
-			{
-				// 递归式计算光线反射
-				return emitted + attenuation * RayTrace(scattered, scene, depth + 1);
-			}
-			else 
-			{
-				// 完全吸收光的情况
-				return vec3(0,0,0);
-			}
-		}
-		else // 与场景中所有物体都不相交，在这里绘制天空盒
+
+		if(depth >= rayMaxDepth) // 完全吸收光的情况
+			return vec3(0,0,0);
+
+		if(!scene.RayTrace(r,0.001f,MaxFloat,hit)) // 与场景中所有物体都不相交，在这里绘制天空
 		{
 			if(background) return scene.background_color;
 			return scene.DrawSky(r);
 		}
+
+		Ray scattered;
+		vec3 attenuation;
+		vec3 emitted = hit.material->Emitted(hit.uv.x,hit.uv.y,hit.pos);
+		if (hit.material->Scatter(r, hit, attenuation, scattered)) // 递归式计算光线反射
+			return emitted + attenuation * RayTrace(scattered, scene, depth + 1,background);
+
+		return emitted; // 光源渲染
 	}
 
 	// BVH加速的光线追踪
 	vec3 Renderer::RayTraceBVH(const Ray& r,Scene& scene,int depth,float time0,float time1,bool background)
 	{
 		Hit hit;
-		if (scene.RayTraceBVH(r, 0.001f, MaxFloat, hit,time0,time1)) 
+
+		if(depth >= rayMaxDepth) // 完全吸收光的情况
+			return vec3(0,0,0);
+
+		if(!scene.RayTraceBVH(r,0.001f,MaxFloat,hit,0,0)) 
 		{
-			Ray scattered;
-			vec3 attenuation;
-			vec3 emitted = hit.material->Emitted(hit.uv.x,hit.uv.y,hit.pos);
-			if (depth < rayMaxDepth && hit.material->Scatter(r, hit, attenuation, scattered)) 
-			{
-				// 递归式计算光线反射
-				return emitted + attenuation * RayTrace(scattered, scene, depth + 1);
-			}
-			else 
-			{
-				// 完全吸收光的情况
-				return vec3(0,0,0);
-			}
-		}
-		else // 与场景中所有物体都不相交，在这里绘制天空盒
-		{
+			// 与场景中所有物体都不相交，在这里绘制天空
 			if(background) return scene.background_color;
 			return scene.DrawSky(r);
 		}
+
+		Ray scattered;
+		vec3 attenuation;
+		vec3 emitted = hit.material->Emitted(hit.uv.x,hit.uv.y,hit.pos);
+		if (hit.material->Scatter(r, hit, attenuation, scattered)) // 递归式计算光线反射
+			return emitted + attenuation * RayTraceBVH(scattered, scene, depth + 1,0,0,background);
+
+		return emitted; // 光源渲染
 	}
 
 }
