@@ -75,6 +75,15 @@
     <ClInclude Include="Timer.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Box.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Translate.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Medium.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp">
@@ -90,6 +99,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Texture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Translate.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Medium.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -10,7 +10,10 @@ int main()
 	// RayTracingInOneWeekendSceneCheckerTexture();
 	// RenderEarthTexture();
 	// RenderEarthTexturePlaneLight();
-	EmptyCornellBox();
+	// EmptyCornellBox();
+	// CornellBox();
+	// CornellSmokeBox();
+	RayTracingNextWeekFinalScene();
 	system("pause");
 	return 0;
 }

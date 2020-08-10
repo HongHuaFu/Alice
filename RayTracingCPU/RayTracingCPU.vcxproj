@@ -140,6 +140,7 @@
   <ItemGroup>
     <ClInclude Include="AABB.hpp" />
     <ClInclude Include="AABBRect.hpp" />
+    <ClInclude Include="Box.hpp" />
     <ClInclude Include="BVH.hpp" />
     <ClInclude Include="Camera.hpp" />
     <ClInclude Include="Core.hpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="MaterialLambert.hpp" />
     <ClInclude Include="MaterialMetal.hpp" />
     <ClInclude Include="Math.hpp" />
+    <ClInclude Include="Medium.hpp" />
     <ClInclude Include="Random.hpp" />
     <ClInclude Include="Ray.hpp" />
     <ClInclude Include="Renderer.hpp" />
@@ -158,13 +160,17 @@
     <ClInclude Include="Sphere.hpp" />
     <ClInclude Include="Texture.hpp" />
     <ClInclude Include="Timer.hpp" />
+    <ClInclude Include="Translate.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Box.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="Medium.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Translate.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

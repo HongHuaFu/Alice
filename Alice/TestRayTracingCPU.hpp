@@ -163,7 +163,7 @@ namespace Test::RayTracingCPU
 
 
 	// An empty cornell box scene.
- 	inline void EmptyCornellBox(const std::string path = "EmptyCornellBox.tga",uint32_t width = 1024,uint32_t height = 1024,uint32_t sampleTimes = 200)
+ 	inline void EmptyCornellBox(const std::string path = "EmptyCornellBox.tga",uint32_t width = 256,uint32_t height = 256,uint32_t sampleTimes = 200)
 	{
 		using namespace Alice::RayTracingCPU;
 		int nx = width;
@@ -176,6 +176,84 @@ namespace Test::RayTracingCPU
 		float aperture = 0.0f;
 
 		Scene scene = Scene::CreateCornellBoxEmpty();
+		scene.camera = std::make_shared<Camera>(lookfrom, lookat, vec3(0,1,0), 40.0f, float(nx)/float(ny), aperture, dist_to_focus,0,0.0f);
+		scene.background_color = vec3(0);
+
+		Renderer r;
+		r.sizeX = nx;
+		r.sizeY = ny;
+		r.randomRay = ns;
+		r.rayMaxDepth = 50;
+
+		r.Render(scene,path,false,0,0,true);
+	}
+
+	// An cornell box scene.
+	inline void CornellBox(const std::string path = "CornellBox.tga",uint32_t width = 256,uint32_t height = 256,uint32_t sampleTimes = 200)
+	{
+		using namespace Alice::RayTracingCPU;
+		int nx = width;
+		int ny = height;
+		int ns = sampleTimes;
+
+		vec3 lookfrom(278, 278, -800);
+		vec3 lookat(278, 278, 0);
+		float dist_to_focus = 10.0f;
+		float aperture = 0.0f;
+
+		Scene scene = Scene::CreateCornellBox();
+		scene.camera = std::make_shared<Camera>(lookfrom, lookat, vec3(0,1,0), 40.0f, float(nx)/float(ny), aperture, dist_to_focus,0,0.0f);
+		scene.background_color = vec3(0);
+
+		Renderer r;
+		r.sizeX = nx;
+		r.sizeY = ny;
+		r.randomRay = ns;
+		r.rayMaxDepth = 50;
+
+		r.Render(scene,path,true,0,0,true);
+	}
+
+	// An cornell box smoke scene.
+	inline void CornellSmokeBox(const std::string path = "CornellSmokeBox.tga",uint32_t width = 256,uint32_t height = 256,uint32_t sampleTimes = 10)
+	{
+		using namespace Alice::RayTracingCPU;
+		int nx = width;
+		int ny = height;
+		int ns = sampleTimes;
+
+		vec3 lookfrom(278, 278, -800);
+		vec3 lookat(278, 278, 0);
+		float dist_to_focus = 10.0f;
+		float aperture = 0.0f;
+
+		Scene scene = Scene::CreateCornellSmokeBox();
+		scene.camera = std::make_shared<Camera>(lookfrom, lookat, vec3(0,1,0), 40.0f, float(nx)/float(ny), aperture, dist_to_focus,0,0.0f);
+		scene.background_color = vec3(0);
+
+		Renderer r;
+		r.sizeX = nx;
+		r.sizeY = ny;
+		r.randomRay = ns;
+		r.rayMaxDepth = 50;
+
+		r.Render(scene,path,true,0,0,true);
+	}
+
+
+	inline void RayTracingNextWeekFinalScene(const std::string path = "RayTracingNextWeekFinalScene.tga",uint32_t width = 256,uint32_t height = 256,uint32_t sampleTimes = 10)
+	{
+		using namespace Alice::RayTracingCPU;
+		int nx = width;
+		int ny = height;
+		int ns = sampleTimes;
+
+		vec3 lookfrom(478, 278, -600);
+		vec3 lookat(278, 278, 00);
+		float dist_to_focus = 10.0f;
+		float aperture = 0.0f;
+
+		Scene scene = Scene::NextWeekFinalScene();
 		scene.camera = std::make_shared<Camera>(lookfrom, lookat, vec3(0,1,0), 40.0f, float(nx)/float(ny), aperture, dist_to_focus,0,0.0f);
 		scene.background_color = vec3(0);
 

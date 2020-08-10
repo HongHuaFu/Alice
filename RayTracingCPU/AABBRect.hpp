@@ -33,6 +33,8 @@ namespace Alice::RayTracingCPU
 
 			hit.t = t;
 			auto outward_normal = vec3(0, 0, 1);
+			if(dot(outward_normal,r.GetDirection()) > 0)
+				outward_normal = vec3(0, 0, -1);
 
 			hit.normal = outward_normal;
 			hit.material = material;
@@ -78,6 +80,8 @@ namespace Alice::RayTracingCPU
 			hit.uv.y = (z-z0)/(z1-z0);
 			hit.t = t;
 			auto outward_normal = vec3(0, 1.0f, 0);
+			if(dot(outward_normal,r.GetDirection()) > 0)
+				outward_normal = vec3(0, -1, 0);
 			hit.normal = outward_normal;
 			hit.material = material;
 			hit.pos = r.At(t);
@@ -119,6 +123,9 @@ namespace Alice::RayTracingCPU
 			hit.uv.y = (z-z0)/(z1-z0);
 			hit.t = t;
 			auto outward_normal = vec3(1, 0, 0);
+			if(dot(outward_normal,r.GetDirection()) > 0)
+				outward_normal = vec3(-1, 0, 0);
+
 			hit.normal = outward_normal;
 			hit.material = material;
 			hit.pos = r.At(t);

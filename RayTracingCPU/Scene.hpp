@@ -13,6 +13,7 @@
 #include <RayTracingCPU/Texture.hpp>
 #include <RayTracingCPU/AABBRect.hpp>
 
+
 namespace Alice::RayTracingCPU
 {
 	class BVH_Node;
@@ -235,11 +236,17 @@ namespace Alice::RayTracingCPU
 			res.shapes.push_back(std::make_shared<AABB_Rect_YZ>(0, 555, 0, 555, 0, red));
 			res.shapes.push_back(std::make_shared<AABB_Rect_XZ>(213, 343, 227, 332, 554, light));
 			res.shapes.push_back(std::make_shared<AABB_Rect_XZ>(0, 555, 0, 555, 0, white));
-			res.shapes.push_back(std::make_shared<AABB_Rect_XY>(0, 555, 0, 555, 555, white));
+			res.shapes.push_back(std::make_shared<AABB_Rect_XZ>(0, 555, 0, 555, 555, white));
 			res.shapes.push_back(std::make_shared<AABB_Rect_XY>(0, 555, 0, 555, 555, white));
 
 			return res;
 		}
+
+		static Scene CreateCornellBox();
+
+		static Scene CreateCornellSmokeBox();
+		
+		static Scene NextWeekFinalScene(const char* imagepath = "./Asset/Textures/2k_earth_daymap.jpg");
 	};
 }
 
