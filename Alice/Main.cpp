@@ -11,9 +11,9 @@ int main()
 	// RenderEarthTexture();
 	// RenderEarthTexturePlaneLight();
 	// EmptyCornellBox();
-	// CornellBox();
+	 CornellBox();
 	// CornellSmokeBox();
-	RayTracingNextWeekFinalScene();
+	// RayTracingNextWeekFinalScene();
 	system("pause");
 	return 0;
 }

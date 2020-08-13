@@ -189,7 +189,7 @@ namespace Test::RayTracingCPU
 	}
 
 	// An cornell box scene.
-	inline void CornellBox(const std::string path = "CornellBox.tga",uint32_t width = 256,uint32_t height = 256,uint32_t sampleTimes = 200)
+	inline void CornellBox(const std::string path = "CornellBox.tga",uint32_t width = 1024,uint32_t height = 1024,uint32_t sampleTimes = 400)
 	{
 		using namespace Alice::RayTracingCPU;
 		int nx = width;
