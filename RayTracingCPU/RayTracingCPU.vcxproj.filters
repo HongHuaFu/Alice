@@ -1,114 +1,111 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="源文件">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="头文件">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="资源文件">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="AABB.hpp">
-      <Filter>头文件</Filter>
+      <Filter>Accelerator</Filter>
     </ClInclude>
     <ClInclude Include="BVH.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Core.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Hit.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Image.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Material.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MaterialDielectric.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MaterialLambert.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MaterialMetal.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Math.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Random.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Ray.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Shape.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Sphere.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture.hpp">
-      <Filter>头文件</Filter>
+      <Filter>Accelerator</Filter>
     </ClInclude>
     <ClInclude Include="AABBRect.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Timer.hpp">
-      <Filter>头文件</Filter>
+      <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="Box.hpp">
-      <Filter>头文件</Filter>
+      <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Translate.hpp">
-      <Filter>头文件</Filter>
+    <ClInclude Include="Camera.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Hit.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.hpp">
+      <Filter>Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialDielectric.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialLambert.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialMetal.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.hpp">
+      <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="Medium.hpp">
-      <Filter>头文件</Filter>
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Ray.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Translate.hpp">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Box.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>源文件</Filter>
+      <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Image.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Box.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Translate.cpp">
-      <Filter>源文件</Filter>
+      <Filter>Tool</Filter>
     </ClCompile>
     <ClCompile Include="Medium.cpp">
-      <Filter>源文件</Filter>
+      <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Translate.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{c76edcff-9663-4fd5-8215-ba4ded74efc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Accelerator">
+      <UniqueIdentifier>{6f339369-c710-490b-ad35-f7fac5ee1dd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tool">
+      <UniqueIdentifier>{dd5f928b-689b-4c96-85a4-ba0209764d0c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

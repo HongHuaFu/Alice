@@ -1,6 +1,8 @@
 #pragma once
 #include <RayTracingCPU/Renderer.hpp>
 
+// Test RayTracingCPU project result here.
+// It mainly based on "raytracing in one weekend" serials book.
 namespace Test::RayTracingCPU
 {
 	// Draw a 3d heart with phong shading model.
