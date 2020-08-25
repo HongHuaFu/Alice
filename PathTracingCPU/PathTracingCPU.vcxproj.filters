@@ -7,6 +7,12 @@
     <Filter Include="UintTest">
       <UniqueIdentifier>{66f5885b-bb9e-4c45-8b3c-69fc7746a59e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shared">
+      <UniqueIdentifier>{b7c45ee0-d9b5-4b9d-8a07-41e72e27adb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tool">
+      <UniqueIdentifier>{1b5caaa8-3d4b-461b-b4c4-a689002d7132}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.hpp">
@@ -15,16 +21,43 @@
     <ClInclude Include="Logger.hpp">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Vector.hpp">
+    <ClInclude Include="TestVector.hpp">
+      <Filter>UintTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Ray.hpp">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="TestRay.hpp">
+      <Filter>UintTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.hpp">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="TestVector.hpp">
+    <ClInclude Include="ImageUtils.hpp">
+      <Filter>Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.hpp">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.hpp">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.hpp">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="TestImage.hpp">
       <Filter>UintTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Logger.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageUtils.cpp">
+      <Filter>Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Shared</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

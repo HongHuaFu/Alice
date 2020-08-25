@@ -3,6 +3,50 @@
 
 namespace Alice::PathTracingCPU 
 {
+	template<typename Scalar, int Dimension>
+	using Vector = glm::vec<Dimension, Scalar>;
+
+	template<typename Scalar, int Dimension>
+	using Nomral = glm::vec<Dimension, Scalar>;
+
+	template<typename Scalar, int Dimension>
+	using Point = glm::vec<Dimension, Scalar>;
+
+	using Vector4f = Vector<float, 4>;
+	using Vector4i = Vector<int, 4>;
+	using Vector4d = Vector<double, 4>;
+	using Vector3f = Vector<float, 3>;
+	using Vector3d = Vector<double, 3>;
+	using Vector3i = Vector<int, 3>;
+	using Vector2f = Vector<float, 2>;
+	using Vector2d = Vector<double, 2>;
+	using Vector2i = Vector<int, 2>;
+	using Vector1f = Vector<float, 1>;
+	using Vector1d = Vector<double, 1>;
+	using Vector1i = Vector<int, 1>;
+	using Point3f = Point<float, 3>;
+	using Point3d = Point<double, 3>;
+	using Point3i = Point<int, 3>;
+	using Point2f = Point<float, 2>;
+	using Point2d = Point<double, 2>;
+	using Point2i = Point<int, 2>;
+	using Nomral3f = Nomral<float, 3>;
+
+	template<typename Scalar, int Dimension>
+	inline static std::string ToString(const glm::vec<Dimension, Scalar>& v)
+	{
+		std::string result;
+		for (size_t i = 0; i < Dimension; ++i)
+		{
+			result += std::to_string(v[i]);
+			if (i + 1 < Dimension)
+				result += ", ";
+		}
+		return "(" + result + ")";
+	}
+
+	/// Deprecate.
+#if UseTVector
 	template<typename Scalar,int Dimension>
 	class TVector : public glm::vec<Dimension, Scalar>
 	{
@@ -95,17 +139,5 @@ namespace Alice::PathTracingCPU
 		// point sub point and the result should be a vector.
 		return static_cast<glm::vec<D, S>>(p1 - p2);
 	}
-
-	template<typename Scalar, int Dimension>
-	inline static std::string ToString(glm::vec<Dimension,Scalar> v)
-	{
-		std::string result;
-		for (size_t i = 0; i < Dimension; ++i)
-		{
-			result += std::to_string(v[i]);
-			if (i + 1 < Dimension)
-				result += ", ";
-		}
-		return "(" + result + ")";
-	}
+#endif
 }

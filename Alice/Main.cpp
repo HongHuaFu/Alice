@@ -19,8 +19,11 @@ int main()
 #pragma endregion
 
 #pragma region PathTracingCPU
+	
 	using namespace Alice::PathTracingCPU::UintTest;
-	TVectorTest::MathRule();
+	using namespace Alice::PathTracingCPU;
+	Logger::Init();
+	TextureLoadAndSave();
 #pragma endregion
 
 	system("pause");

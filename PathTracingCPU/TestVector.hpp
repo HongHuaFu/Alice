@@ -2,9 +2,10 @@
 #include <PathTracingCPU/Vector.hpp>
 #include <PathTracingCPU/Core.hpp>
 
-
 namespace Alice::PathTracingCPU::UintTest 
 {
+	/// Deprecate. 
+#if UseTVector
 	class TVectorTest 
 	{
 	public:
@@ -61,4 +62,5 @@ namespace Alice::PathTracingCPU::UintTest
 			return TVector<S, D>(v);
 		}
 	};
+#endif
 }
