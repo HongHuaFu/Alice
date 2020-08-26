@@ -7,7 +7,7 @@ namespace Alice::PathTracingCPU
 	using Vector = glm::vec<Dimension, Scalar>;
 
 	template<typename Scalar, int Dimension>
-	using Nomral = glm::vec<Dimension, Scalar>;
+	using Normal = glm::vec<Dimension, Scalar>;
 
 	template<typename Scalar, int Dimension>
 	using Point = glm::vec<Dimension, Scalar>;
@@ -30,7 +30,7 @@ namespace Alice::PathTracingCPU
 	using Point2f = Point<float, 2>;
 	using Point2d = Point<double, 2>;
 	using Point2i = Point<int, 2>;
-	using Nomral3f = Nomral<float, 3>;
+	using Normal3f = Normal<float, 3>;
 
 	template<typename Scalar, int Dimension>
 	inline static std::string ToString(const glm::vec<Dimension, Scalar>& v)

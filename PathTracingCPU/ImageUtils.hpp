@@ -13,5 +13,4 @@ namespace Alice::PathTracingCPU::Tool
 		static std::pair<std::vector<Color3f>, Vector2i> Load3Comp(std::string path);
 		static void Save3Comp(std::string filepath, Vector2i size, BitmapType type, const std::vector<Color3f>& data);
 	};
-	
 }

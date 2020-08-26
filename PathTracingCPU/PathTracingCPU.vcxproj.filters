@@ -48,6 +48,24 @@
     <ClInclude Include="TestImage.hpp">
       <Filter>UintTest</Filter>
     </ClInclude>
+    <ClInclude Include="TestPathTracingCPU.hpp">
+      <Filter>UintTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersect.hpp">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Frame.hpp">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.hpp">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.hpp">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="PropertyList.hpp">
+      <Filter>Shared</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Logger.cpp">

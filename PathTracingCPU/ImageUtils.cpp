@@ -46,7 +46,7 @@ namespace Alice::PathTracingCPU::Tool
 		size_t r_i = 0;
 		for (size_t i = 0; i < data.size(); i+= 3 )
 		{
-			data[i] = (unsigned char)( glm::clamp(colordata[r_i].r() * 255.f,0.f,255.f));
+			data[i]   = (unsigned char)( glm::clamp(colordata[r_i].r() * 255.f,0.f,255.f));
 			data[i+1] = (unsigned char)(glm::clamp(colordata[r_i].g() * 255.f,0.f,255.f));
 			data[i+2] = (unsigned char)(glm::clamp(colordata[r_i].b() * 255.f,0.f,255.f));
 			r_i++;

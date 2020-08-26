@@ -148,10 +148,6 @@
       <Project>{3829ad37-01dc-49f7-be16-3875b7aa8af7}</Project>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="TestPathTracingCPU.hpp" />
-    <ClInclude Include="TestRayTracingCPU.hpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

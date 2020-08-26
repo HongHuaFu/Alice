@@ -1,19 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="TestPathTracingCPU.hpp">
-      <Filter>TestFunctions</Filter>
-    </ClInclude>
-    <ClInclude Include="TestRayTracingCPU.hpp">
-      <Filter>TestFunctions</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="Main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="TestFunctions">
-      <UniqueIdentifier>{4d72e879-a2fa-4766-ab8c-eda27f6342de}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
 </Project>

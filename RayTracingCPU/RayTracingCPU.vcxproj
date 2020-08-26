@@ -158,6 +158,7 @@
     <ClInclude Include="Scene.hpp" />
     <ClInclude Include="Shape.hpp" />
     <ClInclude Include="Sphere.hpp" />
+    <ClInclude Include="TestRayTracingCPU.hpp" />
     <ClInclude Include="Texture.hpp" />
     <ClInclude Include="Timer.hpp" />
     <ClInclude Include="Translate.hpp" />

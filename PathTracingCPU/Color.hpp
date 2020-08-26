@@ -9,41 +9,25 @@ namespace Alice::PathTracingCPU
     public:
         Vector3f color;
 
-        /// Initialize the color vector with a uniform value
         Color3f(float value = 0.f) : color(value, value, value) { }
-
-        /// Initialize the color vector with specific per-channel values
         Color3f(float r, float g, float b) : color(r, g, b) { }
-
         explicit Color3f(const Vector3f& c) : color(c) { }
 
-        /// Return a reference to the red channel
         float& r() { return color.r; }
-
-        /// Return a reference to the red channel (const version)
         const float& r() const { return color.r; }
-
-        /// Return a reference to the green channel
         float& g() { return color.g; }
-
-        /// Return a reference to the green channel (const version)
         const float& g() const { return color.g; }
-
-        /// Return a reference to the blue channel
         float& b() { return color.b; }
-
-        /// Return a reference to the blue channel (const version)
         const float& b() const { return color.b; }
-
         const Vector3f& GetColor() const { return color; }
 
-        /// Clamp to the positive range
+        /// 颜色值限定在正值
         Color3f Clamp() const 
         {
             return Color3f(std::max(r(), 0.0f), std::max(g(), 0.0f), std::max(b(), 0.0f));
         }
 
-        /// Check if the color vector contains a NaN/Inf/negative value
+        /// 判断颜色值是否有效 （非负，非无穷，非NaN）
         bool IsValid() const 
         {
             for (int i = 0; i < 3; ++i) {
@@ -54,7 +38,7 @@ namespace Alice::PathTracingCPU
             return true;
         }
 
-        /// Convert from sRGB to linear RGB
+        /// sRGB 转换到线性空间
         Color3f ToLinearRGB() const 
         {
             Color3f result;
@@ -71,7 +55,7 @@ namespace Alice::PathTracingCPU
             return result;
         }
 
-        /// Convert from linear RGB to sRGB
+        /// 线性空间转换到sRGB
         Color3f ToSRGB() const 
         {
             Color3f result;
@@ -88,39 +72,31 @@ namespace Alice::PathTracingCPU
             return result;
         }
 
-        /// Return the associated luminance
+        /// 转换为灰度（亮度）
         float GetLuminance() const 
         {
             return color[0] * 0.212671f + color[1] * 0.715160f + color[2] * 0.072169f;
         }
     };
 
-    /// Return a human-readable string summary
     inline static std::string ToString(const Color3f& c)
     {
         return ToString(c.GetColor());
     }
 
-    /// Represents a linear RGB color and a weight
+    /// RGB 与一个权重通道
     class Color4f 
     {
     public:
         Vector4f color;
 
         const Vector4f& GetColor() const { return color; }
-
-        /// Create an zero value
         Color4f() : color(0.0f, 0.0f, 0.0f, 0.0f) { }
-
-        /// Create from a 3-channel color
         Color4f(const Color3f& c) : color(c.r(), c.g(), c.b(), 1.0f) { }
-
-        /// Initialize the color vector with specific per-channel values
         Color4f(float r, float g, float b, float w) : color(r, g, b, w) { }
-
         explicit Color4f(const Vector4f& v) : color(v) { }
 
-        /// Divide by the filter weight and convert into a Color3f value
+        /// /w 操作并返回rgb
         Color3f DivideByFilterWeight() const 
         {
             Vector3f res;
@@ -132,7 +108,6 @@ namespace Alice::PathTracingCPU
         }
     };
 
-    /// Return a human-readable string summary
     inline static std::string ToString(const Color4f& c)
     {
         return ToString(c.GetColor());

@@ -140,10 +140,16 @@
   <ItemGroup>
     <ClInclude Include="Color.hpp" />
     <ClInclude Include="Core.hpp" />
+    <ClInclude Include="Frame.hpp" />
     <ClInclude Include="ImageUtils.hpp" />
+    <ClInclude Include="Intersect.hpp" />
     <ClInclude Include="Logger.hpp" />
+    <ClInclude Include="Math.hpp" />
+    <ClInclude Include="Object.hpp" />
+    <ClInclude Include="PropertyList.hpp" />
     <ClInclude Include="Ray.hpp" />
     <ClInclude Include="TestImage.hpp" />
+    <ClInclude Include="TestPathTracingCPU.hpp" />
     <ClInclude Include="TestRay.hpp" />
     <ClInclude Include="TestVector.hpp" />
     <ClInclude Include="Texture.hpp" />

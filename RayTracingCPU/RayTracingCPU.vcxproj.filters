@@ -70,6 +70,9 @@
     <ClInclude Include="Translate.hpp">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="TestRayTracingCPU.hpp">
+      <Filter>Test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Box.cpp">
@@ -106,6 +109,9 @@
     </Filter>
     <Filter Include="Tool">
       <UniqueIdentifier>{dd5f928b-689b-4c96-85a4-ba0209764d0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test">
+      <UniqueIdentifier>{e2c6cfc1-7a5f-45f2-845b-1b36f7f58477}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -1,5 +1,5 @@
-#include "TestRayTracingCPU.hpp"
-#include "TestPathTracingCPU.hpp"
+#include <RayTracingCPU/TestRayTracingCPU.hpp>
+#include <PathTracingCPU/TestPathTracingCPU.hpp>
 
 int main()
 {

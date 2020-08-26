@@ -5,18 +5,14 @@
 
 namespace Alice::PathTracingCPU 
 {
-    // Simple timer with millisecond precision.
-    // It mainly used to collect render performance.
+    // 简单时间计数器
     class Timer 
     {
     public:
-        /// Create a new timer and reset it
         Timer() { Reset(); }
-
-        /// Reset the timer to the current time
         void Reset() { start = std::chrono::system_clock::now(); }
 
-        /// Return the number of milliseconds elapsed since the timer was last reset
+        /// 返回启动到当前时间
         double Elapsed() const 
         {
             auto now = std::chrono::system_clock::now();
@@ -24,13 +20,13 @@ namespace Alice::PathTracingCPU
             return (double)duration.count();
         }
 
-        /// Like elapsed(), but return a human-readable string
+        /// 返回规格化后的启动时间
         std::string ElapsedString(bool precise = false) const 
         {
             return timeString(Elapsed(), precise);
         }
 
-        /// Return the number of milliseconds elapsed since the timer was last reset and then reset it
+        /// 返回启动到当前时间并且重置计数器
         double Lap() 
         {
             auto now = std::chrono::system_clock::now();
@@ -39,7 +35,7 @@ namespace Alice::PathTracingCPU
             return (double)duration.count();
         }
 
-        /// Like lap(), but return a human-readable string
+        /// 返回规格化的启动到当前时间并且重置计数器
         std::string LapString(bool precise = false) 
         {
             return timeString(Lap(), precise);
@@ -48,7 +44,6 @@ namespace Alice::PathTracingCPU
     private:
         std::chrono::system_clock::time_point start;
 
-        /// Format time to human-easy-read string.
         inline static std::string timeString(double time, bool precise)
         {
             if (std::isnan(time) || std::isinf(time))
